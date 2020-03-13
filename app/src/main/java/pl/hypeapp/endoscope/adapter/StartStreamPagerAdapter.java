@@ -22,8 +22,6 @@ public class StartStreamPagerAdapter extends FragmentPagerAdapter {
                 return new IpAddressFragment();
             case 1:
                 return new QrCodeFragment();
-            case 2:
-                return new NfcFragment();
             default:
                 break;
         }
@@ -32,6 +30,6 @@ public class StartStreamPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 }

@@ -46,7 +46,6 @@ public class StartStreamActivity extends TiActivity<StartStreamPresenter, StartS
         SurfaceHolder.Callback, Session.Callback {
     public static final int IP_PAGE = 0;
     public static final int QR_CODE_PAGE = 1;
-    public static final int NFC_PAGE = 2;
     public static final String IP_LOCAL = "ip_local";
     private Session session;
     private WiFiStateChangeReceiver wiFiStateChangeReceiver;
@@ -54,7 +53,7 @@ public class StartStreamActivity extends TiActivity<StartStreamPresenter, StartS
     private ViewPager viewPager;
     @BindView(R.id.surface) SurfaceView surfaceView;
     @BindView(R.id.about_connection) View aboutConnectionView;
-    @BindViews({R.id.circle_page1, R.id.circle_page2, R.id.circle_page3}) List<ImageView> dots;
+    @BindViews({R.id.circle_page1, R.id.circle_page2}) List<ImageView> dots;
 
     @NonNull
     @Override
@@ -131,10 +130,6 @@ public class StartStreamActivity extends TiActivity<StartStreamPresenter, StartS
         viewPager.setCurrentItem(QR_CODE_PAGE);
     }
 
-    @OnClick(R.id.nfc_layout)
-    public void SlideToNfcPage() {
-        viewPager.setCurrentItem(NFC_PAGE);
-    }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
