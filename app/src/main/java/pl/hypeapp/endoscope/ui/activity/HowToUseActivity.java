@@ -18,12 +18,12 @@ import pl.hypeapp.endoscope.adapter.HowToUsePagerAdapter;
 import pl.hypeapp.endoscope.ui.listener.OnDotPageChangeListener;
 
 public class HowToUseActivity extends AppCompatActivity {
-    public static final int LAST_PAGE = 3;
+    public static final int LAST_PAGE = 2;
     private ViewPager viewPager;
     @BindView(R.id.next_page_button) ImageView nextPageButton;
     @BindView(R.id.skip_button) TextView skipButton;
     @BindView(R.id.done_button) TextView doneButton;
-    @BindViews({R.id.circle_page1, R.id.circle_page2, R.id.circle_page3, R.id.circle_page4}) List<ImageView> dots;
+    @BindViews({R.id.circle_page1, R.id.circle_page2, R.id.circle_page4}) List<ImageView> dots;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

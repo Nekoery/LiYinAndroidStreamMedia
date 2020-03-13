@@ -13,8 +13,6 @@ public interface ConnectToStreamView extends TiView {
     @CallOnMainThread
     void SlideToInputPage();
 
-    @CallOnMainThread
-    void SlideToNfcPage();
 
     @CallOnMainThread
     void SlideToQrCodePage();

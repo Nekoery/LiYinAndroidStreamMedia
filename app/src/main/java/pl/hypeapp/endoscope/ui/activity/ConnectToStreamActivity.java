@@ -21,7 +21,6 @@ import pl.hypeapp.endoscope.R;
 import pl.hypeapp.endoscope.adapter.ConnectToStreamPagerAdapter;
 import pl.hypeapp.endoscope.presenter.ConnectToStreamPresenter;
 import pl.hypeapp.endoscope.receiver.WiFiStateChangeReceiver;
-import pl.hypeapp.endoscope.ui.fragment.NfcReaderFragment;
 import pl.hypeapp.endoscope.ui.listener.OnDotPageChangeListener;
 import pl.hypeapp.endoscope.view.ConnectToStreamView;
 
@@ -29,11 +28,10 @@ public class ConnectToStreamActivity extends TiActivity<ConnectToStreamPresenter
         implements ConnectToStreamView {
     public static final int PAGE_INPUT = 0;
     public static final int PAGE_QR_CODE = 1;
-    public static final int PAGE_NFC = 2;
     public static final String INTENT_EXTRA_IP_CONNECT = "ip_connect";
     private ViewPager viewPager;
     private WiFiStateChangeReceiver wiFiStateChangeReceiver = new WiFiStateChangeReceiver();
-    @BindViews({R.id.circle_page1, R.id.circle_page2, R.id.circle_page3}) List<ImageView> dots;
+    @BindViews({R.id.circle_page1, R.id.circle_page2}) List<ImageView> dots;
     private ConnectToStreamPagerAdapter connectToStreamPagerAdapter;
 
     @NonNull
@@ -70,11 +68,7 @@ public class ConnectToStreamActivity extends TiActivity<ConnectToStreamPresenter
 
     @Override
     public void passIntentToNfcReader(Intent intent) {
-        Fragment fragment = connectToStreamPagerAdapter.getItem(PAGE_NFC);
-        if (fragment instanceof NfcReaderFragment) {
-            NfcReaderFragment nfcReaderFragment = (NfcReaderFragment) fragment;
-            nfcReaderFragment.onNfcIntent(intent);
-        }
+        Fragment fragment = connectToStreamPagerAdapter.getItem(PAGE_INPUT);
     }
 
     @Override
@@ -89,11 +83,6 @@ public class ConnectToStreamActivity extends TiActivity<ConnectToStreamPresenter
         viewPager.setCurrentItem(PAGE_QR_CODE);
     }
 
-    @Override
-    @OnClick(R.id.nfc_layout)
-    public void SlideToNfcPage() {
-        viewPager.setCurrentItem(PAGE_NFC);
-    }
 
     @Override
     public void intentToPlayStreamActivity(String ipAddress) {

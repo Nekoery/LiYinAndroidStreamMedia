@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import pl.hypeapp.endoscope.ui.fragment.IpAddressFragment;
-import pl.hypeapp.endoscope.ui.fragment.NfcFragment;
 import pl.hypeapp.endoscope.ui.fragment.QrCodeFragment;
 
 
