@@ -55,8 +55,8 @@
     <string name="ht_wi_fi_enabled">确保设备已连接WIFI并在同一网络中.</string>
     <string name="ht_link_via">Linking devices is possible with different ways.</string>
     <string name="ht_welcome_desc">Endoscope lets you to stream live video between android devices!</string>
-    <string name="made_by_header">Endoscope made by</string>
-    <string name="ht_made_by_desc">Thank you for installing! \n \nContact E-MAIL: \n PSZEM.SZYM@GMAIL.COM</string>
+    <string name="made_by_header">感谢使用</string>
+    <string name="ht_made_by_desc">Thanks</string>
     <string name="dialog_set">SET</string>
     <string name="port_error">Port cannot be empty</string>
     <string name="grant_permission_to_camera">Grant permission to camera</string>
