@@ -14,6 +14,9 @@
     <color name="how_to_use_background">#651d28</color>
 
     <color name="colorWlk_page1">#FFF59365</color>
+    <color name="color_bg_notification">#80000000</color>
+    <color name="color_bg_name">#80000000</color>
+
 
 
 </resources>
