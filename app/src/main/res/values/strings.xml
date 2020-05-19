@@ -1,25 +1,27 @@
 <resources>
     <string name="app_name">WIFI监控</string>
 
-    <string name="resolution_dialog_title">Set video resolution</string>
+    <string name="resolution_dialog_title">设置相机分辨率</string>
     <string name="stream_sound_dialog_title">启用声音</string>
     <string name="port_dialog_title">设置端口</string>
     <string name="codec_dialog_title">设置编码格式</string>
     <string name="button_text">设置</string>
     <string name="stream_audio">声音</string>
-    <string name="settings">SETTINGS</string>
-    <string name="resolution">Resolution</string>
+    <string name="settings">设置</string>
+    <string name="resolution">分辨率</string>
     <string name="set_video_resolution">设置分辨率</string>
-    <string name="enable_sound_stream">Enable audio stream</string>
+    <string name="enable_sound_stream">启用声音</string>
     <string name="disabled">OFF</string>
     <string name="enabled">ON</string>
     <string name="port">Port</string>
-    <string name="set_port">Set port</string>
-    <string name="set_video_encoder_title">Set video encoder</string>
+    <string name="ChangePassword">修改密码</string>
+    <string name="Album">相册</string>
+    <string name="set_port">设置端口</string>
+    <string name="set_video_encoder_title">影像编码格式</string>
     <string name="video_encoder">影像编码格式</string>
-    <string name="start_stream">START STREAM</string>
-    <string name="connect_stream">CONNECT STREAM</string>
-    <string name="settings_uppercase">SETTINGS</string>
+    <string name="start_stream">开启服务器</string>
+    <string name="connect_stream">连接服务器</string>
+    <string name="settings_uppercase">设置</string>
     <string name="how_to_use">使用说明</string>
     <string name="cancel">返回</string>
     <string name="port_changed">端口已被修改</string>
@@ -31,7 +33,7 @@
     <string name="type_ip_address">填写IP地址</string>
     <string name="ip">IP</string>
     <string name="scan_qr_code">扫描二维码</string>
-    <string name="scan_qr_code_capital">SCAN QR CODE</string>
+    <string name="scan_qr_code_capital">二维码</string>
     <string name="write_ip_addres">网络IP地址</string>
     <string name="connect">连接....</string>
 
@@ -40,27 +42,27 @@
     <string name="qr_code_not_found">未发现二维码</string>
 
     <string name="about_input_ip">输入IP地址进行联机</string>
-    <string name="scan_qr_code_description">Click connect stream on the device which you want to connect then scan qr code.</string>
-    <string name="scanner_qr_code">Click start stream on the device which you want to connect then scan qr code.</string>
-    <string name="about_type_ip">Click view stream on the device which you want to connect then type above ip address.</string>
+    <string name="scan_qr_code_description">使用客户端扫码连接</string>
+    <string name="scanner_qr_code">扫描服务器二维码连接</string>
+    <string name="about_type_ip">使用客户端输入IP连接</string>
     <string name="about_qr_code"></string>
 
     <string name="wi_fi_disabled">WiFi已被禁用</string>
     <string name="package_name">pl.hypeapp.vrstream</string>
     <string name="header_enable_wifi">启用 Wi-Fi</string>
-    <string name="header_link_via">You can link to stream via</string>
+    <string name="header_link_via">连接流媒体设备</string>
     <string name="or">or</string>
     <string name="ht_wi_fi_enabled">确保设备已连接WIFI并在同一网络中.</string>
-    <string name="ht_link_via">Linking devices is possible with different ways.</string>
-    <string name="ht_welcome_desc">Endoscope lets you to stream live video between android devices!</string>
+    <string name="ht_link_via">不同连接方式</string>
+    <string name="ht_welcome_desc">WIFI监控</string>
     <string name="made_by_header">感谢使用</string>
     <string name="ht_made_by_desc">Thanks</string>
-    <string name="dialog_set">SET</string>
-    <string name="port_error">Port cannot be empty</string>
-    <string name="grant_permission_to_camera">Grant permission to camera</string>
-    <string name="permission_not_granted">Camera permission not granted</string>
-    <string name="permission_never_ask">Camera permission set to never ask. You should go to android permission settings.</string>
-    <string name="receiver_back_to_menu">BACK TO MAIN MENU</string>
+    <string name="dialog_set">设置</string>
+    <string name="port_error">端口不可为空</string>
+    <string name="grant_permission_to_camera">授予相机权限</string>
+    <string name="permission_not_granted">相机权限未授予</string>
+    <string name="permission_never_ask">摄像权限被禁止，请授予摄像权限</string>
+    <string name="receiver_back_to_menu">返回主菜单</string>
     <string name="rtsp_connecting">数据流连接中，请稍后</string>
     <string name="error_dialog_title">Error</string>
 
@@ -77,11 +79,11 @@
     <string name="choose_detect_degree">choose video-mode detect degree</string>
     <string name="copy_device_fingerprint">copy device fingerprint</string>
     <string name="device_fingerprint_copied">device fingerprint：：\n%s\n copied</string>
-    <string name="active_engine">active engine</string>
-    <string name="active_success">active success</string>
-    <string name="already_activated">already activated</string>
-    <string name="active_failed">active failed,code is %d</string>
-    <string name="library_not_found">library not found, please check if you put .so files into the project directory app\\src\\main\\jniLibs</string>
+    <string name="active_engine">应用引擎初始化</string>
+    <string name="active_success">应用引擎初始化成功</string>
+    <string name="already_activated">应用引擎已初始化</string>
+    <string name="active_failed">应用引擎初始化错误 代码：%d</string>
+    <string name="library_not_found">library not found请与开发者联系</string>
     <string name="ft_op_0">only detect 0 degree in video mode</string>
     <string name="ft_op_90">only detect 90 degree in video mode</string>
     <string name="ft_op_180">only detect 180 degree in video mode</string>
@@ -110,10 +112,10 @@
     <string name="engine_not_initialized">engine not initialized! code is %d</string>
 
     <!--single/dual camera register&recognize page-->
-    <string name="register">register</string>
-    <string name="switch_camera">switch camera</string>
-    <string name="switch_camera_failed">switch camera failed</string>
-    <string name="notice_change_detect_degree">camera switched, if no face detected, please change face detect degree in homepage</string>
+    <string name="register">注册</string>
+    <string name="switch_camera">切换摄像头</string>
+    <string name="switch_camera_failed">摄像头切换成功</string>
+    <string name="notice_change_detect_degree">摄像头切换成功</string>
     <string name="recognize_failed_notice">DENIED:%s</string>
     <string name="recognize_success_notice">PASS:%s</string>
     <string name="low_confidence_level">face low confidence level</string>

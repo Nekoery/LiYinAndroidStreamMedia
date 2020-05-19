@@ -14,12 +14,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hb.dialog.myDialog.MyPwdInputDialog;
+
 import net.grandcentrix.thirtyinch.TiActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.hypeapp.endoscope.R;
+import pl.hypeapp.endoscope.presenter.AESPresenter;
 import pl.hypeapp.endoscope.presenter.SettingsPresenter;
 import pl.hypeapp.endoscope.util.SettingsPreferencesUtil;
 import pl.hypeapp.endoscope.view.SettingsView;
@@ -31,6 +34,7 @@ public class SettingsActivity extends TiActivity<SettingsPresenter, SettingsView
     @BindView(R.id.vide_encoder_option) TextView videoEncoder;
     @BindView(R.id.resolution_option) TextView resolution;
     @BindView(R.id.stream_sound_option) TextView audioStream;
+    @BindView(R.id.password_text) TextView passwordText;
 
     @NonNull
     @Override
@@ -149,5 +153,47 @@ public class SettingsActivity extends TiActivity<SettingsPresenter, SettingsView
         portValue.setText(port);
     }
 
+    @Override
+    @OnClick(R.id.password_layout)
+    public void onChangePassword(){
+        final MyPwdInputDialog pwdDialog = new MyPwdInputDialog(this)
+                .builder()
+                .setTitle("请输入原密码");
+        final MyPwdInputDialog pwdDialog2 = new MyPwdInputDialog(this)
+                .builder()
+                .setTitle("请输入新密码");
+        pwdDialog2.setPasswordListener(new MyPwdInputDialog.OnPasswordResultListener() {
+            @Override
+            public void onPasswordResult(String password) {
+                    getPresenter().ChangePassword(password);
+                    pwdDialog2.dismiss();
+            }
+        });
+        pwdDialog.setPasswordListener(new MyPwdInputDialog.OnPasswordResultListener() {
+            @Override
+            public void onPasswordResult(String password) {
+                if(getPresenter().VerifyPassword(password)){
+                        pwdDialog.dismiss();
+                        pwdDialog2.show();
+                }else {
+                    Toast.makeText(getApplicationContext(),"密码错误",Toast.LENGTH_LONG).show();
+                    pwdDialog.dismiss();
+                }
+
+            }
+        });
+        pwdDialog.show();
+    }
+
+    public void changePasswordDone(){
+        Toast.makeText(getApplicationContext(),"修改密码成功",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    @OnClick(R.id.album_layout)
+    public void OpenAlbum() {
+        Intent intent = new Intent(SettingsActivity.this,AlbumActivity.class);
+        startActivity(intent);
+    }
 
 }

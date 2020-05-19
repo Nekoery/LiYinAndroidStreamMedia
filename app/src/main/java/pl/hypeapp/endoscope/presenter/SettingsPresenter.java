@@ -79,4 +79,20 @@ public class SettingsPresenter extends TiPresenter<SettingsView> {
         isAudioStream = settingsPreferencesUtil.loadAudioPreference();
         getView().setAudioStream(isAudioStream);
     }
+
+    public Boolean VerifyPassword(String password){
+        String login_password = settingsPreferencesUtil.loadPassword();
+        if(password.equals(AESPresenter.decryptBase642String(login_password,"kakuishdyshifncgyrsjdiosfnvjfeas","asadfdedwderfvgd"))){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public void ChangePassword(String password){
+        settingsPreferencesUtil.savePasswordPreference(AESPresenter.encryptString2Base64(password,"kakuishdyshifncgyrsjdiosfnvjfeas","asadfdedwderfvgd"));
+        getView().changePasswordDone();
+    }
+
 }

@@ -67,7 +67,7 @@ public class SplashScreenActivity extends TiActivity<SplashScreenPresenter, Spla
 
     @Override
     public void intentToHowToUse() {
-        Intent intent = new Intent(SplashScreenActivity.this, PasswordActivity.class);
+        Intent intent = new Intent(SplashScreenActivity.this, HowToUseActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

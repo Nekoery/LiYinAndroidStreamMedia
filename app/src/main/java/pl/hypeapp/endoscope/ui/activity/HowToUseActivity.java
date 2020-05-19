@@ -2,6 +2,7 @@ package pl.hypeapp.endoscope.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
@@ -16,6 +17,7 @@ import butterknife.OnClick;
 import pl.hypeapp.endoscope.R;
 import pl.hypeapp.endoscope.adapter.HowToUsePagerAdapter;
 import pl.hypeapp.endoscope.ui.listener.OnDotPageChangeListener;
+import pl.hypeapp.endoscope.util.SettingsPreferencesUtil;
 
 public class HowToUseActivity extends AppCompatActivity {
     public static final int LAST_PAGE = 2;
@@ -53,7 +55,15 @@ public class HowToUseActivity extends AppCompatActivity {
 
     @OnClick(R.id.done_button)
     public void done() {
-        Intent i = new Intent(HowToUseActivity.this, MainMenuActivity.class);
-        startActivity(i);
+        SettingsPreferencesUtil settingsPreferencesUtil = new SettingsPreferencesUtil(PreferenceManager.getDefaultSharedPreferences(this));
+        if(settingsPreferencesUtil.loadHavePasswordPreference()) {
+            Intent i = new Intent(HowToUseActivity.this, MainMenuActivity.class);
+            startActivity(i);
+        }
+        else {
+            Intent i = new Intent(HowToUseActivity.this, PasswordActivity.class);
+            startActivity(i);
+        }
+
     }
 }

@@ -10,6 +10,9 @@ public class SettingsPreferencesUtil {
     private static final String SHARED_PREF_VIDEO_ENCODER = "video_encoder";
     private static final String SHARED_PREF_IS_AUDIO_STREAM = "is_audio_stream";
     private static final String SHARED_PREF_IS_FIRST_RUN = "isFirstRun";
+    private static final String SHARED_PREF_HAVE_PASSWORD = "havePassword";
+    private static final String SHARED_PREF_ACTIVE_ENGINE = "activeEngine";
+    private static final String SHARED_PREF_DEFAULT_PASSWORD = "password";
     private static final int SHARED_PREF_DEFAULT_RESOLUTION = 3;
     private static final int SHARED_PREF_DEFAULT_VIDEO_ENCODER = 0;
     private SharedPreferences settingsPreferences;
@@ -36,6 +39,18 @@ public class SettingsPreferencesUtil {
 
     public boolean loadIsFirstRunPreference() {
         return settingsPreferences.getBoolean(SHARED_PREF_IS_FIRST_RUN, true);
+    }
+
+    public Boolean loadHavePasswordPreference(){
+        return settingsPreferences.getBoolean(SHARED_PREF_HAVE_PASSWORD,false);
+    }
+
+    public Boolean loadactiveEngine(){
+        return settingsPreferences.getBoolean(SHARED_PREF_ACTIVE_ENGINE,false);
+    }
+
+    public String loadPassword(){
+        return settingsPreferences.getString("SHARED_PREF_PASSWORD",SHARED_PREF_DEFAULT_PASSWORD);
     }
 
     public void savePortPreferencePreference(String port) {
@@ -65,6 +80,24 @@ public class SettingsPreferencesUtil {
     public void saveIsFirstRunPreference(boolean isFirstRun) {
         SharedPreferences.Editor editor = settingsPreferences.edit();
         editor.putBoolean(SHARED_PREF_IS_FIRST_RUN, isFirstRun);
+        editor.apply();
+    }
+
+    public void saveHavePasswordPreference(boolean havePassword){
+        SharedPreferences.Editor editor = settingsPreferences.edit();
+        editor.putBoolean(SHARED_PREF_HAVE_PASSWORD,havePassword);
+        editor.apply();
+    }
+
+    public void saveActiveEnginePreference(Boolean activeEngine){
+        SharedPreferences.Editor editor = settingsPreferences.edit();
+        editor.putBoolean(SHARED_PREF_ACTIVE_ENGINE,activeEngine);
+        editor.apply();
+    }
+
+    public void savePasswordPreference(String password){
+        SharedPreferences.Editor editor = settingsPreferences.edit();
+        editor.putString("SHARED_PREF_PASSWORD",password);
         editor.apply();
     }
 }

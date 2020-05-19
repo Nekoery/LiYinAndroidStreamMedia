@@ -22,7 +22,6 @@ public class ConfirmDialog extends Dialog {
 
     public interface OnBtnClickListener {
         public void ok();
-
         public void cancel();
     }
 

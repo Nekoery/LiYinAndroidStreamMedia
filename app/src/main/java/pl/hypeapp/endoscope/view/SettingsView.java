@@ -38,4 +38,12 @@ public interface SettingsView extends TiView {
     @CallOnMainThread
     void changePortSuccessful();
 
+    @CallOnMainThread
+    void onChangePassword();
+
+    @CallOnMainThread
+    void changePasswordDone();
+
+    @CallOnMainThread
+    void OpenAlbum();
 }

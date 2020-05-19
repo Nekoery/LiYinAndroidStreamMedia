@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:text="or" />
+                android:text="或" />
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -81,7 +81,7 @@
                 style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type IP manually" />
+                android:text="输入IP" />
         </LinearLayout>
 
         <TextView

@@ -1,11 +1,14 @@
 package com.arcsoft.arcfacedemo.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -14,9 +17,13 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 
 import pl.hypeapp.endoscope.R;
+import pl.hypeapp.endoscope.presenter.AESPresenter;
+import pl.hypeapp.endoscope.ui.activity.MainMenuActivity;
+
 import com.arcsoft.arcfacedemo.model.DrawInfo;
 import com.arcsoft.arcfacedemo.util.ConfigUtil;
 import com.arcsoft.arcfacedemo.util.DrawHelper;
+import com.arcsoft.arcfacedemo.util.NV21ToBitmap;
 import com.arcsoft.arcfacedemo.util.camera.CameraHelper;
 import com.arcsoft.arcfacedemo.util.camera.CameraListener;
 import com.arcsoft.arcfacedemo.util.face.RecognizeColor;
@@ -30,8 +37,15 @@ import com.arcsoft.face.GenderInfo;
 import com.arcsoft.face.LivenessInfo;
 import com.arcsoft.face.enums.DetectMode;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 public class FaceAttrPreviewActivity extends BaseActivity implements ViewTreeObserver.OnGlobalLayoutListener {
     private static final String TAG = "FaceAttrPreviewActivity";
@@ -96,6 +110,27 @@ public class FaceAttrPreviewActivity extends BaseActivity implements ViewTreeObs
         }
     }
 
+    private void saveBitmap(Bitmap bitmap) {
+        String sdCardDir = Environment.getExternalStorageDirectory() + "/fingerprintimages/";
+        try {
+            File dirFile = new File(sdCardDir);
+            if (!dirFile.exists()) {              //如果不存在，那就建立这个文件夹
+                dirFile.mkdirs();
+            }
+            File file = new File(sdCardDir, String.valueOf(System.currentTimeMillis())+".jpg");
+            FileOutputStream fos = new FileOutputStream(file);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            fos.write(AESPresenter.encryptByte2Byte(byteArrayOutputStream.toByteArray(),"kakuishdyshifncgyrsjdiosfnvjfeas","asadfdedwderfvgd"));
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @Override
     protected void onDestroy() {
@@ -157,7 +192,14 @@ public class FaceAttrPreviewActivity extends BaseActivity implements ViewTreeObs
                     for (int i = 0; i < faceInfoList.size(); i++) {
                         drawInfoList.add(new DrawInfo(drawHelper.adjustRect(faceInfoList.get(i).getRect()), genderInfoList.get(i).getGender(), ageInfoList.get(i).getAge(), faceLivenessInfoList.get(i).getLiveness(), RecognizeColor.COLOR_UNKNOWN, null));
                     }
-                    drawHelper.draw(faceRectView, drawInfoList);
+                    NV21ToBitmap nv21ToBitmap = new  NV21ToBitmap(getApplicationContext());
+                    Bitmap bitmap = nv21ToBitmap.nv21ToBitmap(nv21,previewSize.width,previewSize.height);
+
+                    saveBitmap(bitmap);
+                    onDestroy();
+                    Intent intent = new Intent(FaceAttrPreviewActivity.this, MainMenuActivity.class);
+                    startActivity(intent);
+//                    drawHelper.draw(faceRectView, drawInfoList);
                 }
             }
 

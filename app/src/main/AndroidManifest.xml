@@ -13,7 +13,6 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -33,6 +32,7 @@
         android:supportsRtl="true"
         android:theme="@style/App.Theme">
         <activity android:name=".ui.activity.PasswordActivity"></activity>
+        <activity android:name=".ui.activity.AlbumActivity"></activity>
         <activity
             android:name=".ui.activity.MainMenuActivity"
             android:screenOrientation="portrait"
@@ -120,8 +120,6 @@
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
