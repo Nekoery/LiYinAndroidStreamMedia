@@ -104,6 +104,8 @@ public class PasswordActivity extends Activity implements View.OnClickListener {
                     settingsPreferencesUtil.saveHavePasswordPreference(true);
                     settingsPreferencesUtil.savePasswordPreference(AESPresenter.encryptString2Base64(
                             password,"kakuishdyshifncgyrsjdiosfnvjfeas","asadfdedwderfvgd"));
+                    Intent intent = new Intent(PasswordActivity.this, MainMenuActivity.class);
+                    startActivity(intent);
                 }
             });
         }
